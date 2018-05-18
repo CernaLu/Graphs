@@ -5,6 +5,7 @@ from pylab import rcParams
 import seaborn as sb
 import matplotlib.pyplot as plt
 import networkx as nx
+from math import sqrt
 
 rcParams['figure.figsize'] = 10, 6
 sb.set_style('whitegrid')
@@ -38,7 +39,8 @@ edges = { (n[0], n[1], 5), \
 G.add_nodes_from(nodes_labels)
 G.add_weighted_edges_from(edges)
 
-pos = nx.spring_layout(G)
+k = 1/sqrt(5)
+pos = nx.spring_layout(G, k=k, iterations=20, scale=0.8) #CHANGE FOR OVERLAPS
 edges_labels = nx.get_edge_attributes(G,'weight')
 
 
@@ -50,7 +52,7 @@ nx.draw(G, pos, with_labels=True)
 path = nx.shortest_path(G, source=n[0], target=n[7], weight='weight')
 path_edges = list(zip(path,path[1:]))
 nx.draw_networkx_nodes(G, pos, nodelist=path, node_color='y')
-nx.draw_networkx_edges(G,pos, edgelist=path_edges, edge_color='r', width=3)
+nx.draw_networkx_edges(G,pos, edgelist=path_edges, edge_color='r', width=2)
 nx.draw_networkx_edge_labels(G, pos, edge_labels=edges_labels)
 plt.axis('equal')
 plt.show()
