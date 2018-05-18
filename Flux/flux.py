@@ -9,37 +9,48 @@ import networkx as nx
 rcParams['figure.figsize'] = 10, 6
 sb.set_style('whitegrid')
 
-F = nx.DiGraph()
+G = nx.DiGraph()
 
-#f = {1: 'A', 2: 'B', 3: 'C', 4: 'D', 5: 'E',\
-#    6: 'F', 7: 'G', 8: 'H', 9}
-
-f = {}
+nodes_labels = []
+n = {}
+i = 0
+for ascii_decimal in range(65, 73, 1): #65 is A, 90 is Z
+    ascii_letter = chr(ascii_decimal) 
+    nodes_labels.append(ascii_letter)
+    n[i] = ascii_letter
+    i += 1
     
-for ascii_letter in range(65, 90, 1):
-    char = chr(ascii_letter)
-    f.append( char )
+#EDGES CONNECTIONS
+#          from | to | lenght
+edges = { (n[0], n[1], 5), \
+          (n[0], n[2], 5), \
+          (n[0], n[3], 9), \
+          (n[1], n[2], 3), \
+          (n[1], n[4], 2), \
+          (n[3], n[5], 7), \
+          (n[2], n[6], 2), \
+          (n[2], n[5], 4), \
+          (n[5], n[6], 2), \
+          (n[4], n[6], 1), \
+          (n[6], n[7], 2),
+          (n[5], n[7], 5), }
 
-fnodes = {'A', 'B', 'C', 'D', 'E', 'F'}
+G.add_nodes_from(nodes_labels)
+G.add_weighted_edges_from(edges)
 
-edges = { (f[1],f[2],5), (f[1],f[3],5), (f[1],f[4],13),\
-            (f[4],f[5],3), (f[4],f[6],2), (f[3],f[6],7) }
-
-#pos = {1: (f[1],f[2]), 2: (f[1],f[2]), 3: (f[1],f[2]), \
-#       4: (f[1],f[2]), 5: (f[1],f[2]), 6: (f[1],f[2]) }
-
-F.add_nodes_from(fnodes)
-F.add_weighted_edges_from(edges)
-
-pos = nx.spring_layout(F)
-labels = nx.get_edge_attributes(F,'weight')
+pos = nx.spring_layout(G)
+edges_labels = nx.get_edge_attributes(G,'weight')
 
 
-status = nx.info(F) 
+status = nx.info(G) 
 print (status)
-print(nx.shortest_path_length(F,source=f[1],target=f[6], weight='weight'))
+print('Sortest path lenght = ', nx.shortest_path_length(G, source=n[0], target=n[7], weight='weight'))
 
-nx.draw(F, pos, with_labels=True)
-nx.draw_networkx_edge_labels(F, pos, edge_labels=labels)
-
+nx.draw(G, pos, with_labels=True)
+path = nx.shortest_path(G, source=n[0], target=n[7], weight='weight')
+path_edges = list(zip(path,path[1:]))
+nx.draw_networkx_nodes(G, pos, nodelist=path, node_color='y')
+nx.draw_networkx_edges(G,pos, edgelist=path_edges, edge_color='r', width=3)
+nx.draw_networkx_edge_labels(G, pos, edge_labels=edges_labels)
+plt.axis('equal')
 plt.show()
