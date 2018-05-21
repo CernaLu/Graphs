@@ -1,0 +1,10 @@
+Minimizar:    Z = 200 X_ab + 400 X_ac + 900 X_ad + 100 X_ce
+                + 300 X_bc + 300 X_de + 200 X_ed 
+
+Sujeta a:
+            X_ab + X_ac + X_ad                              = 50
+           -X_ab +               X_bc                       = 40
+                 - X_ac        - X_bc + X_ce                = 0
+                        - X_ad               + X_de - X_ed  = -30
+                                      - X_ce - X_de + X_ed  = -60
+            
