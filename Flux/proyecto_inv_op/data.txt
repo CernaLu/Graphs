@@ -1,0 +1,14 @@
+Descripción	Aumento_por_unidad	X12	X13	X14	X21	X24	X24	X31	X32	X34 X41 X42 X43
+Distancia           1	        10.2 15.1 13.5 24.9 19.4 9.7 20.8 8.3 12.7 10.4 5.8 7.8
+Baches              1           4	6   10  2	5	3	1	13	0 0 2 0
+Semaforo           2.5		    8	9	6	5	7	5	8	3	4 3 3 3
+Escuela            5.0		    1	0	0	0	2	1	1	0	0 0 0 0
+Hospital           4.0		    0	0	0	0	1	0	1	0	0 1 0 0
+C_comercial        2.0		    0	0	0	1	1	0	1	0	0 0 0 1
+Estacionamiento	   3.5		    2	1	0	3	2	0	3	1	2 1 1 1
+Restaurante	       3.0		    3	5	2	7	6	1	4	2	4 1 2 4
+Fábrica/Empresa    2.0		    1	2	1	0	0	0	3	0	2 1 1 1
+Parada_de_autobús  1.5		    10	16	10	17	12	8	14	9	8 3 2 1
+Glorieta           2.3		    1	0	0	2	3	0	2	0	1 1 2 1
+
+	

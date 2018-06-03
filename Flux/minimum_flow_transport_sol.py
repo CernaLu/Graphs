@@ -15,6 +15,9 @@
     # the cost incurred by sending one unit of flow on that edge. If not present, the
     # weight is considered to be 0. Default value: ‘weight’.
 
+
+
+
 import sys
 import numpy as numpy
 import pandas as pd
@@ -78,23 +81,23 @@ f.add_edge('d', 'e')
 f.add_edge('e', 'd')
 f.add_edge('c', 'e', capacity= 80)
 
-F.add_nodes_from(nodes_labels)
-F.add_weighted_edges_from(edges)
-position = nx.spring_layout(F, k=k, iterations=20, scale=0.8) #CHANGE FOR OVERLAPS
-edges_labels = nx.get_edge_attributes(F,'weight')
+#F.add_nodes_from(nodes_labels)
+#F.add_weighted_edges_from(edges)
+#position = nx.spring_layout(F, k=k, iterations=20, scale=0.8) #CHANGE FOR OVERLAPS
+#edges_labels = nx.get_edge_attributes(F,'weight')
 
 f.add_nodes_from(nodes_labels)
 position = nx.spring_layout(f, k=k, iterations=20, scale=0.8) #CHANGE FOR OVERLAPS
-edges_label = nx.get_edge_attributes(f,'capacity')
+#edges_label = nx.get_edge_attributes(f,'capacity')
 
-simplex_edge = edges
+#simplex_edge = edges
 
-status = nx.info(F) 
-print (status)
-nx.draw(F, position, with_labels=True)
+#status = nx.info(F) 
+#print (status)
+#nx.draw(F, position, with_labels=True)
 nx.draw(f, position, with_labels=True)
-nx.draw_networkx_edges(F, position, edgelist=simplex_edge, edge_color='y', width=2)
-nx.draw_networkx_edge_labels(F, position, edge_labels=edges_labels)
+#nx.draw_networkx_edges(F, position, edgelist=simplex_edge, edge_color='y', width=2)
+#nx.draw_networkx_edge_labels(F, position, edge_labels=edges_labels)
 nx.draw_networkx_edge_labels(f, position, edge_labels=edges_label)
 plt.axis('equal')
 plt.show()
